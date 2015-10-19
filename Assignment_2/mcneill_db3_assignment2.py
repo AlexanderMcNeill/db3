@@ -119,20 +119,55 @@ print("\n========================Exercise 8 - Validation========================
 
 """
 from sklearn.datasets import load_digits
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.cross_validation import cross_val_score
+
+// Loading the data
 digits = load_digits()
 X = digits.data
 y = digits.target
 
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import cross_val_score
+// Generating cross value score
 cv = cross_val_score(KNeighborsClassifier(1), X, y, cv=10)
 cv.mean()
 """
 
-print("This code is using cross Validation to ensure that the model isn't going to over fit the data.
-+"\nIn this example they are they are using the KNN algorithm and cross validating 5 times.""
-+"\nCross validating splits the data into test and train groups and gets the average accuracy
+print("This code is using cross Validation to ensure that the model isn't going to over fit the data."
++"\nIn this example they are they are using the KNN algorithm and cross validating 10 times."
++"\nCross validating splits the data into test and train groups and gets the average accuracy"
 +"\nof all of the splits a.k.a folding the data."
 +"\nThis average is what is being output on the final line of the code.")
 
 print("\n========================Exercise 9 - Regularization========================\n")
+
+"""
+from sklearn.datasets import load_boston
+from sklearn.cross_validation import train_test_split
+from sklearn import linear_model
+
+// Loading the data
+boston = load_boston()
+
+// Splitting the data into training and test sets
+// Half the data for testing and half for training
+X_train, X_test, y_train, y_test = train_test_split(boston.data, boston.target, test_size=0.5, random_state=0)
+
+// Creating a linear regression model and printing the coefficients
+regr = linear_model.LinearRegression()
+regr.fit(X_train, y_train);
+print regr.coef_
+
+print "-------------------"
+
+// Creating another linear regression model using regression and printing the coefficients
+ridgeRegr = linear_model.SGDRegressor(loss='squared_loss', penalty='l2') #Hint: The answer to the 1st question lies here
+ridgeRegr = linear_model.Ridge(alpha = 10000)
+ridgeRegr.fit(X_train, y_train)
+print ridgeRegr.coef_
+"""
+
+print("This code is showing the difference between using regularization and not using regularization."
++"\nThe second model imposes a penalty upon each of the coefficients bringing them closer to zero,
++"\nthis is why the values are different."
++"\nSquared weights penalizes large values more this is why the values in the second model are much smaller."
+)
