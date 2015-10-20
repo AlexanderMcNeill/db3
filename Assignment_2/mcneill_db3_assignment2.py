@@ -14,6 +14,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
+from sklearn.decomposition import PCA
 
 """Exercise 1 - K Means"""
 
@@ -109,6 +110,18 @@ print metrics.classification_report(y_test, y_predict)
 
 print("\n========================Exercise 6 - Principal Component Analysis========================\n")
 # Todo: Add principle component analysis
+Cov = np.array([[2.9, -2.2], [-2.2, 6.5]])
+X = np.random.multivariate_normal([1,2], Cov, size=200)
+plt.figure(figsize=(4,4))
+plt.scatter(X[:,0], X[:,1])
+plt.axis('equal') # equal scaling on both axis;
+plt.show()
+
+pca = PCA(n_components=2)
+pca.fit(X)
+
+print("The first component is {},{} and explains {} of the variance".format(pca.components_[0][0], pca.components_[0][1], pca.explained_variance_ratio_[0]))
+print("The first component is {},{} and explains {} of the variance".format(pca.components_[1][0], pca.components_[1][1], pca.explained_variance_ratio_[1]))
 
 print("========================Exercise 7 - Artificial neural networks========================\n"
 + "\nFor the network described in ann.png id the input vector was (1,0) "
@@ -160,7 +173,7 @@ print regr.coef_
 print "-------------------"
 
 // Creating another linear regression model using regression and printing the coefficients
-ridgeRegr = linear_model.SGDRegressor(loss='squared_loss', penalty='l2') #Hint: The answer to the 1st question lies here
+ridgeRegr = linear_model.SGDRegressor(loss='squared_loss', penalty='12') #Hint: The answer to the 1st question lies here
 ridgeRegr = linear_model.Ridge(alpha = 10000)
 ridgeRegr.fit(X_train, y_train)
 print ridgeRegr.coef_
