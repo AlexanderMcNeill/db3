@@ -16,6 +16,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
 
+"""Exercise 1 - K Means"""
 
 print("========================Exercise 1 - K Means========================")
 
@@ -120,7 +121,7 @@ pca = PCA(n_components=2)
 pca.fit(X)
 
 print("The first component is {},{} and explains {} of the variance".format(pca.components_[0][0], pca.components_[0][1], pca.explained_variance_ratio_[0]))
-print("The first component is {},{} and explains {} of the variance".format(pca.components_[1][0], pca.components_[1][1], pca.explained_variance_ratio_[1]))
+print("The second component is {},{} and explains {} of the variance".format(pca.components_[1][0], pca.components_[1][1], pca.explained_variance_ratio_[1]))
 
 print("========================Exercise 7 - Artificial neural networks========================\n"
 + "\nFor the network described in ann.png id the input vector was (1,0) "
@@ -179,7 +180,7 @@ print ridgeRegr.coef_
 """
 
 print("This code is showing the difference between using regularization and not using regularization."
-+"\nThe second model imposes a penalty upon each of the coefficients bringing them closer to zero,"
-+"this is why the values are different."
++"\nThe second model imposes a penalty upon each of the coefficients bringing them closer to zero,""
++"\nthis is why the values are different."
 +"\nSquared weights penalizes large values more this is why the values in the second model are much smaller."
 )
