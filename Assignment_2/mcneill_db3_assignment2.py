@@ -180,7 +180,7 @@ print ridgeRegr.coef_
 """
 
 print("This code is showing the difference between using regularization and not using regularization."
-+"\nThe second model imposes a penalty upon each of the coefficients bringing them closer to zero,""
++"\nThe second model imposes a penalty upon each of the coefficients bringing them closer to zero,"
 +"\nthis is why the values are different."
 +"\nSquared weights penalizes large values more this is why the values in the second model are much smaller."
 )
